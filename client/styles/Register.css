@@ -1,0 +1,62 @@
+/* src/styles/register.css */
+
+.register-card {
+  background: rgba(24, 24, 27, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+}
+
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+.form-input {
+  width: 100%;
+  background: rgba(9,9,11,0.8);
+  border: 1px solid #27272a;
+  border-radius: 12px;
+  padding: 14px 45px;
+  color: white;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+
+.form-input::placeholder {
+  color:#71717a;
+}
+
+
+.form-input:focus {
+  border-color:#6366f1;
+  box-shadow:0 0 0 4px rgba(99,102,241,0.15);
+}
+
+
+.input-icon {
+  position:absolute;
+  left:15px;
+  top:42px;
+  color:#71717a;
+}
+
+
+.form-input:focus + .input-icon {
+  color:#6366f1;
+}
+
+
+.bg-glow {
+  background:
+  radial-gradient(
+    circle at 50% 30%,
+    rgba(79,70,229,0.18),
+    transparent 45%
+  );
+}
