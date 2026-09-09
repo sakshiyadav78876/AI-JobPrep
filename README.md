@@ -88,7 +88,9 @@ Used for:
 # Project Structure
 
 React.js Frontend
-                       │
+
+
+                      │
                        │ REST API
                        ▼
                Node.js + Express
