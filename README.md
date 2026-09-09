@@ -86,3 +86,55 @@ Used for:
 ---
 
 # Project Structure
+
+React.js Frontend
+                       │
+                       │ REST API
+                       ▼
+               Node.js + Express
+                       │
+          ┌────────────┼────────────┐
+          ▼            ▼            ▼
+      MongoDB      PDF Parser    Groq API
+          │            │            │
+          │            ▼            ▼
+          │       Resume Text    AI Analysis
+          │                         │
+          └────────────┬────────────┘
+                       ▼
+                 Analysis Result
+                       │
+                       ▼
+                  React Dashboard
+Data Flow
+
+The application follows a simple resume-to-job analysis workflow:
+
+Resume PDF
+    ↓
+Extract Resume Text
+    ↓
+Store Resume Data
+    ↓
+Add Job Description
+    ↓
+Send Resume + Job Description
+    ↓
+Groq AI Analysis
+    ↓
+Generate Skill Gap
+    ↓
+Display Results
+Current Project Status
+
+The core resume analysis workflow has been implemented:
+
+User authentication
+Resume PDF upload
+Resume text extraction
+Job description input
+MongoDB data storage
+Groq AI integration
+Resume and job description analysis
+Skill matching
+Missing skill identification
