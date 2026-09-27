@@ -45,17 +45,7 @@ message:"Job description required"
 
 
 
-
-const filePath = path.join(
-
-__dirname,
-
-"..",
-
-file.path
-
-);
-
+const filePath = path.resolve(file.path);
 
 
 const dataBuffer = fs.readFileSync(filePath);
