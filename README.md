@@ -1,142 +1,254 @@
-# AI JobPrep 
+# AI JobPrep
 
-AI JobPrep is an AI-powered job preparation platform designed to help students and job seekers improve their career readiness.
+AI JobPrep is a full-stack AI-powered placement preparation platform designed to help students prepare for software engineering placements through resume analysis, interview preparation, and an AI placement coach.
 
-The platform allows users to upload their resume and analyze it with a given job description. It provides AI-based insights about skill matching, missing skills, and improvement areas to help users prepare better for job opportunities.
-
----
-
-# Features Implemented ✅
-
-## 1. User Authentication
-- User registration and login system
-- Secure authentication using JWT
-- Protected dashboard access
-- User session management
+The platform combines a React frontend, Node.js/Express backend, MongoDB database, JWT-based authentication, and Groq-powered AI services to provide personalized placement preparation.
 
 ---
 
-## 2. AI Resume Analysis Dashboard
+## Overview
 
-The dashboard provides an interactive interface where users can:
+Preparing for software engineering placements often requires students to manage multiple activities such as:
 
-- Upload their resume in PDF format
-- Enter a target job description
-- Analyze resume compatibility with the job role
-- Get AI-generated career insights
+- Resume optimization
+- Job description analysis
+- Technical interview preparation
+- Coding preparation
+- HR interview preparation
+- Communication practice
+- General placement guidance
 
+AI JobPrep brings these activities together into a single platform.
 
-### Analysis Includes:
-
-- Resume understanding
-- Skill extraction
-- Job requirement matching
-- Skill compatibility analysis
-- Missing skill identification
-- Career improvement suggestions
-
+Users can upload their resume, provide a job description, receive an AI-powered resume analysis, generate interview questions, and interact with an AI placement coach.
 
 ---
 
-# Dashboard Features
+## Features
 
-The current dashboard provides:
+### 1. Resume Analyzer
 
-- Modern responsive UI
-- Resume upload section
-- Job description input
-- AI analysis process screen
-- Resume compatibility score
-- Skill match analysis
-- Skill gap identification
-- Career roadmap suggestions
+The Resume Analyzer allows users to upload a PDF resume and provide a target job description.
 
+The system:
+
+- Accepts PDF resumes
+- Extracts resume text
+- Analyzes the resume against the job description
+- Identifies matching skills
+- Identifies missing skills
+- Generates improvement recommendations
+- Produces an ATS-oriented analysis
+
+This helps users understand how well their resume aligns with a particular job description.
 
 ---
 
-# Technology Stack 💻
+### 2. AI Interview Preparation
 
-## Frontend
+The Interview Prep module generates personalized preparation material based on the user's resume.
+
+It provides:
+
+- Technical interview questions
+- Coding questions
+- HR questions
+- Communication questions
+- Important points to remember
+
+The goal is to help students practice questions that are relevant to their technical background and placement preparation.
+
+---
+
+### 3. AI Placement Coach
+
+AI Coach provides an interactive AI-based placement preparation assistant.
+
+Students can ask questions related to:
+
+- Java
+- DSA
+- SQL
+- DBMS
+- OOP
+- Operating Systems
+- Computer Networks
+- React
+- Node.js
+- Express
+- MongoDB
+- Coding problems
+- Technical interviews
+- HR interviews
+- Aptitude
+- Resume preparation
+- General placement preparation
+
+The coach provides beginner-friendly explanations, examples, interview tips, and coding guidance when appropriate.
+
+---
+
+### 4. Authentication
+
+The application includes user authentication using:
+
+- User registration
+- User login
+- JWT authentication
+- Protected API routes
+- Password hashing using bcrypt
+
+Protected features require a valid authentication token.
+
+---
+
+### 5. Dashboard
+
+The dashboard provides a central place for users to access the major features of the platform.
+
+It connects:
+
+- Resume Analyzer
+- Interview Preparation
+- AI Coach
+- User profile
+- Authentication
+
+---
+
+## Tech Stack
+
+### Frontend
 
 - React.js
 - Vite
 - React Router
-- Tailwind CSS
-- CSS3
+- Axios
+- SCSS
+- CSS
 
-
-## Backend
+### Backend
 
 - Node.js
 - Express.js
 - MongoDB
-- JWT Authentication
+- Mongoose
+- JWT
+- bcryptjs
+- Multer
+- PDF parsing
 
+### AI
 
-## AI Integration
+- Groq API
+- `openai/gpt-oss-120b`
 
-- Gemini AI API
+### Development & Deployment
 
-Used for:
-- Resume analysis
-- Skill extraction
-- Job matching insights
-
+- Git
+- GitHub
+- Render
+- Vercel
 
 ---
 
-# Project Structure
+## System Architecture
 
-React.js Frontend
+```text
+                    ┌──────────────────────┐
+                    │       User           │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │   React Frontend     │
+                    │      + Vite          │
+                    └──────────┬───────────┘
+                               │
+                         REST API / Axios
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │ Node.js + Express    │
+                    │      Backend         │
+                    └───────┬───────┬──────┘
+                            │       │
+                 ┌──────────┘       └──────────┐
+                 ▼                             ▼
+        ┌─────────────────┐          ┌─────────────────┐
+        │    MongoDB      │          │   Groq AI API   │
+        │    Database     │          │                 │
+        └─────────────────┘          └─────────────────┘
 
 
-                      │
-                       │ REST API
-                       ▼
-               Node.js + Express
-                       │
-          ┌────────────┼────────────┐
-          ▼            ▼            ▼
-      MongoDB      PDF Parser    Groq API
-          │            │            │
-          │            ▼            ▼
-          │       Resume Text    AI Analysis
-          │                         │
-          └────────────┬────────────┘
-                       ▼
-                 Analysis Result
-                       │
-                       ▼
-                  React Dashboard
-Data Flow
 
-The application follows a simple resume-to-job analysis workflow:
 
-Resume PDF
-    ↓
-Extract Resume Text
-    ↓
-Store Resume Data
-    ↓
-Add Job Description
-    ↓
-Send Resume + Job Description
-    ↓
-Groq AI Analysis
-    ↓
-Generate Skill Gap
-    ↓
-Display Results
-Current Project Status
+Authentication Flow
+User
+  ↓
+Register / Login
+  ↓
+Backend Authentication
+  ↓
+Password Verification
+  ↓
+JWT Token Generated
+  ↓
+Token Stored on Client
+  ↓
+Protected API Requests
 
-The core resume analysis workflow has been implemented:
 
-User authentication
-Resume PDF upload
-Resume text extraction
-Job description input
-MongoDB data storage
-Groq AI integration
-Resume and job description analysis
-Skill matching
-Missing skill identification
+
+
+Resume Analysis Flow
+User uploads resume
+        ↓
+PDF received by backend
+        ↓
+Resume text extracted
+        ↓
+Job description received
+        ↓
+AI analysis generated
+        ↓
+Skills compared
+        ↓
+Recommendations generated
+        ↓
+Analysis stored in MongoDB
+        ↓
+Result displayed to user
+
+
+
+
+Interview Preparation Flow
+Authenticated User
+        ↓
+Request Interview Preparation
+        ↓
+Latest Resume Retrieved
+        ↓
+Resume Information Sent to AI
+        ↓
+Questions Generated
+        ↓
+Technical / Coding / HR /
+Communication / Must Remember
+        ↓
+Results Displayed
+AI Coach Flow
+User Question
+      ↓
+Authenticated API Request
+      ↓
+Coach Controller
+      ↓
+AI Coach Service
+      ↓
+Groq AI
+      ↓
+Generated Response
+      ↓
+Frontend Chat Interface
