@@ -30,7 +30,8 @@ app.use("/api/ai", require("./routes/aiRoutes"));
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/user", require("./routes/userRoutes"));
 app.use("/api/resume", require("./routes/resumeRoutes"));
-
+app.use("/api/interview", require("./routes/interviewRoutes"));
+app.use("/api/coach", require("./routes/coachRoutes"));
 
 // Default Route
 app.get("/", (req, res) => {

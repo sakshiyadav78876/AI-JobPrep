@@ -1,58 +1,51 @@
 const Groq = require("groq-sdk");
 
-
 const client = new Groq({
     apiKey: process.env.GROQ_API_KEY
 });
 
+const generateAIResponse = async (
+    prompt,
+    systemPrompt = `
+    You are a deterministic ATS resume analyzer.
 
-const generateAIResponse = async(prompt)=>{
+    Always give consistent results.
+    Same input must always produce same output.
+    Never randomly change scores.
+    Return only valid JSON.
+    `
+) => {
 
-    try{
+    try {
 
+        const completion = await client.chat.completions.create({
 
-   const completion = await client.chat.completions.create({
+            model: "openai/gpt-oss-120b",
 
-    model: "openai/gpt-oss-120b",
+            messages: [
+                {
+                    role: "system",
+                    content: systemPrompt
+                },
+                {
+                    role: "user",
+                    content: prompt
+                }
+            ],
 
-    messages:[
-        {
-            role:"system",
-            content:
-            `
-            You are a deterministic ATS resume analyzer.
+            temperature: 0,
 
-            Always give consistent results.
-            Same input must always produce same output.
-            Never randomly change scores.
-            Return only JSON.
-            `
-        },
+            max_tokens: 6000
 
-        {
-            role:"user",
-            content:prompt
-        }
-    ],
-
-
-    temperature:0,
-
-    max_tokens:2000
-
-});
-
-
+        });
 
         return completion
-        .choices[0]
-        .message
-        .content;
-
-
+            .choices[0]
+            .message
+            .content;
 
     }
-    catch(error){
+    catch (error) {
 
         console.log(
             "Groq Error:",
@@ -64,7 +57,5 @@ const generateAIResponse = async(prompt)=>{
     }
 
 };
-
-
 
 module.exports = generateAIResponse;
