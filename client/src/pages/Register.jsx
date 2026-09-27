@@ -13,7 +13,7 @@ import {
   CheckCircle2
 } from "lucide-react";
 import API from "../api/axios";
-import "../../styles/register.css";
+import "../../styles/Register.css";
 
 function Register() {
   const navigate = useNavigate();
