@@ -93,17 +93,19 @@ const Dashboard = () => {
 
     <div className="nav-links">
 
-      <NavLink to="/dashboard">
-        Dashboard
-      </NavLink>
+    <NavLink to="/dashboard">
+             Resume Analyzer
+          </NavLink>
 
-      <NavLink to="/resume-analyzer">
-        Resume Analyzer
-      </NavLink>
+     
 
-      <NavLink to="/interview-prep">
-        Interview Prep
-      </NavLink>
+          <NavLink to="/interview-prep">
+            Interview Prep
+          </NavLink>
+
+          <NavLink to="/ai-coach">
+            AI Coach
+             </NavLink>
 
     </div>
 
